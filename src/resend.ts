@@ -9,7 +9,7 @@ import UpdatedEventEmail from "./components/emails/updated-event";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const convertToICSDatetime = (date: Date): ics.DateTime => {
+export const convertToICSDatetime = (date: Date): ics.DateTime => {
   return [
     date.getFullYear(),
     date.getMonth() + 1,
