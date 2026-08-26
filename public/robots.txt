@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /api/
+Disallow: /groups/
+Disallow: /members/
+Disallow: /all-groups
+Disallow: /all-members
+Disallow: /verification
+Disallow: /community
+Allow: /

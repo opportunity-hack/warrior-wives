@@ -46,6 +46,9 @@ Core models: **User**, **Group**, **Event**, **Interest**
 Junction tables: `MembersOnGroups` (has `admin` flag), `AttendeesOnEvents`, `OrganizersOnEvents`, `InterestsOnUsers`, `TagsOnGroups`
 Groups can be password-protected (`passwordEnabled`, `password`) and archived.
 
+### Deployment
+Production runs on **Render** (web service `warriorwives`, srv-cohucqf79t8c7388dodg, https://warriorwives.onrender.com, Ohio, starter plan, auto-deploys from `main`). The `fly.toml`/`Dockerfile` are from an old Fly.io setup and are not used by Render (build: `npm install; npx prisma migrate deploy; npx prisma generate; npm run build`). Note: Chakra/Emotion inlines ~237 KB of `<style>` into every SSR response, so every page (including 404s) is ~251 KB uncompressed.
+
 ### Styling
 Hybrid approach: Tailwind CSS + Chakra UI (with custom theme in `src/theme/`) + shadcn/ui components in `src/components/ui/`. Chakra provider wraps the app via `src/providers/chakraProvider.tsx`.
 
