@@ -10,7 +10,17 @@ const protectedDirectories = [
   "/community",
 ];
 
+// Vulnerability scanners hammer these paths thousands of times a day; without
+// this check each one renders the full ~251 KB not-found page, which was the
+// bulk of our Render bandwidth usage.
+const scannerPatterns =
+  /\.(php\d?|asp|aspx|jsp|cgi|sql|bak|rar|7z|tar|gz|zip|ini|log|sh|dll|exe)$|\/(wp-[\w-]*|wordpress|phpmyadmin|cgi-bin)(\/|$)|\/\.(?!well-known)[\w.-]+/i;
+
 export default auth((req) => {
+  if (scannerPatterns.test(req.nextUrl.pathname)) {
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
   if (!req.auth?.user) {
     const url = new URL(req.url);
 
