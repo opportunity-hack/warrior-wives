@@ -40,6 +40,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `src/resend.ts` — Email sending (Resend) with React Email templates and ICS calendar attachments
 - `src/supabase.ts` — Supabase client for file storage (group banners, event photos, profile images)
 - `prisma/schema.prisma` — Database schema
+- `src/components/Map/` — MapTiler choropleth shaded by troop counts from `/api/groups/counts` (groups have only `state`/`county` strings, no lat/lng)
 
 ### Database Models (Prisma)
 Core models: **User**, **Group**, **Event**, **Interest**
